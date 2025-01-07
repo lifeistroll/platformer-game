@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bn36iawt8wkf"]
+
+[ext_resource type="PackedScene" uid="uid://dwjcpl6q8fmtg" path="res://scenes/killzone.tscn" id="1_7d0xf"]
+[ext_resource type="Texture2D" uid="uid://cq3bded26t2tg" path="res://assests/tilemap-characters_packed.png" id="1_llmhr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qbrfc"]
+atlas = ExtResource("1_llmhr")
+region = Rect2(48, 24, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jw2hc"]
+atlas = ExtResource("1_llmhr")
+region = Rect2(72, 24, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wtnv0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qbrfc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jw2hc")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 1.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qvu0r"]
+size = Vector2(18, 18)
+
+[node name="enemy" type="Node2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(-12, -9)
+sprite_frames = SubResource("SpriteFrames_wtnv0")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="killzone" parent="." instance=ExtResource("1_7d0xf")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
+position = Vector2(250, 137)
+shape = SubResource("RectangleShape2D_qvu0r")
