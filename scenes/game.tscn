@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://be1yjey85igsb"]
+[gd_scene load_steps=14 format=3 uid="uid://be1yjey85igsb"]
 
 [ext_resource type="PackedScene" uid="uid://dy0633jr8flrv" path="res://scenes/player.tscn" id="1_p2poo"]
 [ext_resource type="PackedScene" uid="uid://omylfvvxf7rg" path="res://scenes/platform.tscn" id="3_2cpf0"]
@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://11u57aqe2t15" path="res://assests/tilemap_packed.png" id="3_rcjah"]
 [ext_resource type="PackedScene" uid="uid://b20d2r2ra57ln" path="res://scenes/background.tscn" id="4_oqgkx"]
 [ext_resource type="PackedScene" uid="uid://bn36iawt8wkf" path="res://scenes/enemy.tscn" id="5_h6swj"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_s5cgu"]
+tile_data = PackedInt32Array(0, 1114113, 0, 65536, 1114113, 2, 1, 1179649, 0, 65537, 1114113, 4, 131073, 1048577, 4, 196609, 1048577, 5, 262145, 1114113, 6, 2, 1245185, 0, 65538, 1245185, 2)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xw2u4"]
 texture = ExtResource("3_rcjah")
@@ -236,6 +239,45 @@ texture_region_size = Vector2i(18, 18)
 tile_size = Vector2i(18, 18)
 physics_layer_0/collision_layer = 1
 sources/1 = SubResource("TileSetAtlasSource_xw2u4")
+pattern_0 = SubResource("TileMapPattern_s5cgu")
+
+[sub_resource type="Animation" id="Animation_2fwt4"]
+resource_name = "move"
+length = 2.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-207, -92), Vector2(-471, -92)]
+}
+
+[sub_resource type="Animation" id="Animation_d8ac0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-207, -92)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_c552e"]
+_data = {
+"RESET": SubResource("Animation_d8ac0"),
+"move": SubResource("Animation_2fwt4")
+}
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_22k3y"]
 distance = -191.0
@@ -247,10 +289,19 @@ distance = -191.0
 [node name="Tiles" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_8wedp")
 format = 2
-layer_0/tile_data = PackedInt32Array(65532, 131073, 1, 65533, 131073, 1, 65534, 131073, 1, 65535, 131073, 1, 0, 131073, 1, 1, 131073, 1, 2, 131073, 1, 65528, 131073, 1, 65529, 131073, 1, 65530, 131073, 1, 65531, 131073, 1, 3, 131073, 1, 4, 131073, 1, 5, 131073, 1, 6, 131073, 1, 65527, 65537, 1, 7, 196609, 1, 131063, 65537, 6, 131064, 262145, 5, 131065, 262145, 5, 131066, 262145, 5, 131067, 262145, 5, 131068, 262145, 5, 131069, 262145, 5, 131070, 262145, 5, 131071, 262145, 5, 65536, 262145, 5, 65537, 262145, 5, 65538, 262145, 5, 65539, 262145, 5, 65540, 262145, 1, 65541, 262145, 1, 65542, 262145, 1, 65543, 196609, 6, 131079, 196609, 6, 131078, 262145, 5, 131077, 262145, 5, 131076, 262145, 5, 131075, 262145, 5, 131074, 262145, 5, 131073, 262145, 5, 131072, 262145, 5, 196607, 262145, 5, 196606, 262145, 5, 196605, 262145, 5, 196604, 262145, 5, 196603, 262145, 5, 196602, 262145, 5, 196601, 262145, 5, 196600, 262145, 5, 196599, 65537, 6, 262135, 65537, 6, 262136, 262145, 5, 262137, 262145, 5, 262138, 262145, 1, 262139, 262145, 5, 262140, 262145, 5, 262141, 262145, 5, 262142, 262145, 5, 262143, 262145, 5, 196608, 262145, 1, 196609, 262145, 5, 196610, 262145, 5, 196611, 262145, 5, 196612, 262145, 5, 196613, 262145, 5, 196614, 262145, 5, 196615, 196609, 6, 262151, 196609, 6, 262150, 262145, 5, 262149, 262145, 5, 262148, 262145, 5, 262147, 262145, 5, 262146, 262145, 5, 262145, 262145, 5, 262144, 262145, 5, 327679, 262145, 5, 327678, 262145, 5, 327677, 262145, 5, 327676, 262145, 5, 327675, 262145, 5, 327674, 262145, 5, 327673, 262145, 5, 327672, 262145, 5, 327671, 65537, 6, 393207, 65537, 7, 393208, 131073, 7, 393209, 131073, 7, 393210, 131073, 7, 393211, 131073, 7, 393212, 131073, 7, 393213, 131073, 7, 393214, 131073, 7, 393215, 131073, 7, 327680, 131073, 7, 327681, 131073, 7, 327682, 131073, 7, 327683, 131073, 7, 327684, 131073, 7, 327685, 131073, 7, 327686, 131073, 7, 327687, 196609, 7)
+layer_0/tile_data = PackedInt32Array(65532, 131073, 1, 65533, 131073, 1, 65534, 131073, 1, 65535, 131073, 1, 0, 131073, 1, 1, 131073, 1, 2, 131073, 1, 65530, 131073, 1, 65531, 131073, 1, 3, 131073, 1, 4, 131073, 1, 5, 131073, 1, 6, 131073, 1, 65527, 65537, 1, 7, 196609, 1, 131063, 65537, 6, 131064, 262145, 5, 131065, 262145, 5, 131066, 262145, 5, 131067, 262145, 5, 131068, 262145, 5, 131069, 262145, 5, 131070, 262145, 5, 131071, 262145, 5, 65536, 262145, 5, 65537, 262145, 5, 65538, 262145, 5, 65539, 262145, 5, 65540, 262145, 1, 65541, 262145, 1, 65542, 262145, 1, 65543, 196609, 6, 131079, 196609, 6, 131078, 262145, 5, 131077, 262145, 5, 131076, 262145, 5, 131075, 262145, 5, 131074, 262145, 5, 131073, 262145, 5, 131072, 262145, 5, 196607, 262145, 5, 196606, 262145, 5, 196605, 262145, 5, 196604, 262145, 5, 196603, 262145, 5, 196602, 262145, 5, 196601, 262145, 5, 196600, 262145, 5, 196599, 65537, 6, 262135, 65537, 6, 262136, 262145, 5, 262137, 262145, 5, 262138, 262145, 1, 262139, 262145, 5, 262140, 262145, 5, 262141, 262145, 5, 262142, 262145, 5, 262143, 262145, 5, 196608, 262145, 1, 196609, 262145, 5, 196610, 262145, 5, 196611, 262145, 5, 196612, 262145, 5, 196613, 262145, 5, 196614, 262145, 5, 196615, 196609, 6, 262151, 196609, 6, 262150, 262145, 5, 262149, 262145, 5, 262148, 262145, 5, 262147, 262145, 5, 262146, 262145, 5, 262145, 262145, 5, 262144, 262145, 5, 327679, 262145, 5, 327678, 262145, 5, 327677, 262145, 5, 327676, 262145, 5, 327675, 262145, 5, 327674, 262145, 5, 327673, 262145, 5, 327672, 262145, 5, 327671, 65537, 6, 393207, 65537, 7, 393208, 131073, 7, 393209, 131073, 7, 393210, 131073, 7, 393211, 131073, 7, 393212, 131073, 7, 393213, 131073, 7, 393214, 131073, 7, 393215, 131073, 7, 327680, 131073, 7, 327681, 131073, 7, 327682, 131073, 7, 327683, 131073, 7, 327684, 131073, 7, 327685, 131073, 7, 327686, 131073, 7, 327687, 196609, 7, 65528, 131073, 1, 65529, 131073, 1, -196616, 1114113, 2, -262152, 1114113, 0, -262150, 1245185, 0, -196614, 1245185, 2, -262151, 1179649, 0, -196615, 1114113, 4, -131079, 1048577, 4, -65543, 1048577, 5, -7, 1114113, 6)
 
 [node name="platform" parent="." instance=ExtResource("3_2cpf0")]
-position = Vector2(-62, -27)
+position = Vector2(-145, -56)
+
+[node name="platform2" parent="." instance=ExtResource("3_2cpf0")]
+position = Vector2(-207, -92)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="platform2"]
+libraries = {
+"": SubResource("AnimationLibrary_c552e")
+}
+autoplay = "move"
 
 [node name="Player" parent="." instance=ExtResource("1_p2poo")]
 z_index = 5
@@ -268,7 +319,7 @@ position_smoothing_enabled = true
 position = Vector2(-266, -72)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="killzone"]
-position = Vector2(114, -15)
+position = Vector2(46, 8)
 shape = SubResource("WorldBoundaryShape2D_22k3y")
 
 [node name="enemy" parent="." instance=ExtResource("5_h6swj")]

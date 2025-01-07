@@ -4,8 +4,8 @@ extends Area2D
 
 func _on_body_entered(body):
 	print("OVER")
-	Engine.time_scale = 0.7
-	#body.get_node("CollisionShape2D").queue_free()
+	Engine.time_scale = 0.4
+	body.get_node("pColl").queue_free()
 	timer.start()
 
 

@@ -49,7 +49,7 @@ animations = [{
 [node name="Player" type="CharacterBody2D"]
 script = ExtResource("1_so3ee")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="pColl" type="CollisionShape2D" parent="."]
 position = Vector2(2, -11.5)
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_40j5q")

@@ -29,6 +29,7 @@ animations = [{
 size = Vector2(18, 18)
 
 [node name="enemy" type="Node2D"]
+position = Vector2(-10, -26)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-12, -9)
