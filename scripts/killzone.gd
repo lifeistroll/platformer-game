@@ -1,13 +1,19 @@
 extends Area2D
 
-@onready var timer = $Timer
+@onready var game_manager = $"../game_manager"
 
+
+var checkpoint_manager
+var player
+
+func _ready():
+	checkpoint_manager = get_parent().get_node("checkpoint_manager")
+	player = get_parent().get_node("Player")
+	
 func _on_body_entered(body):
-	print("OVER")
-	Engine.time_scale = 0.4
-	body.get_node("pColl").queue_free()
-	timer.start()
+	if body.name == "Player":
+		killPlayer()
+		game_manager.decrease_lives()
 
-func _on_timer_timeout() -> void:
-	Engine.time_scale = 1.0
-	get_tree().reload_current_scene()
+func killPlayer():
+	player.position = checkpoint_manager.last_location

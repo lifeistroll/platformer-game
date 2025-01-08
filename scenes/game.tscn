@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://be1yjey85igsb"]
+[gd_scene load_steps=16 format=3 uid="uid://be1yjey85igsb"]
 
 [ext_resource type="PackedScene" uid="uid://dy0633jr8flrv" path="res://scenes/player.tscn" id="1_p2poo"]
 [ext_resource type="PackedScene" uid="uid://omylfvvxf7rg" path="res://scenes/platform.tscn" id="3_2cpf0"]
@@ -6,8 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://11u57aqe2t15" path="res://assests/tilemap_packed.png" id="3_rcjah"]
 [ext_resource type="PackedScene" uid="uid://b20d2r2ra57ln" path="res://scenes/background.tscn" id="4_oqgkx"]
 [ext_resource type="PackedScene" uid="uid://cgae63v0uu2ue" path="res://scenes/jumper.tscn" id="4_s6v8h"]
+[ext_resource type="PackedScene" uid="uid://dsfndvahvfj1l" path="res://scenes/checkpoint.tscn" id="5_58gwq"]
 [ext_resource type="FontFile" uid="uid://dwdk5ks7ck5po" path="res://assests/Daydream.ttf" id="6_ing0j"]
 [ext_resource type="Texture2D" uid="uid://bpfoi6wd3t8jj" path="res://assests/heart.png" id="7_ebkvi"]
+[ext_resource type="Script" path="res://scripts/checkpoint_manager.gd" id="10_b64jt"]
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="11_07gvl"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_s5cgu"]
 tile_data = PackedInt32Array(0, 1114113, 0, 65536, 1114113, 2, 1, 1179649, 0, 65537, 1114113, 4, 131073, 1048577, 4, 196609, 1048577, 5, 262145, 1114113, 6, 2, 1245185, 0, 65538, 1245185, 2)
@@ -321,7 +324,7 @@ position = Vector2(1526, 81)
 
 [node name="Player" parent="." instance=ExtResource("1_p2poo")]
 z_index = 5
-position = Vector2(1402, -52)
+position = Vector2(-117, -2)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(50, 19)
@@ -339,9 +342,9 @@ position = Vector2(-266, -72)
 position = Vector2(-6, 14)
 shape = SubResource("WorldBoundaryShape2D_22k3y")
 
-[node name="Node" type="Node" parent="."]
+[node name="Texts" type="Node" parent="."]
 
-[node name="Label" type="Label" parent="Node"]
+[node name="Label" type="Label" parent="Texts"]
 offset_left = -274.0
 offset_top = -86.0
 offset_right = 2464.0
@@ -354,7 +357,7 @@ text = "Press W to jump"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="Node"]
+[node name="Label2" type="Label" parent="Texts"]
 offset_left = -275.0
 offset_top = -103.0
 offset_right = 3531.0
@@ -367,7 +370,7 @@ text = "Press A and D to Move"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label3" type="Label" parent="Node"]
+[node name="Label3" type="Label" parent="Texts"]
 offset_left = 140.0
 offset_top = -19.0
 offset_right = 4340.0
@@ -380,7 +383,7 @@ text = "DONT JUMP IN THE WATER!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label4" type="Label" parent="Node"]
+[node name="Label4" type="Label" parent="Texts"]
 offset_left = 501.0
 offset_top = 1.0
 offset_right = 3764.0
@@ -393,32 +396,42 @@ text = "FOLLOW THE ARROWS"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
 
-[node name="Panel" type="Panel" parent="CanvasLayer"]
+[node name="Panel" type="Panel" parent="UI"]
 scale = Vector2(2, 2)
 size_flags_horizontal = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/Panel"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Panel"]
 layout_mode = 1
 offset_right = 62.0
 offset_bottom = 18.0
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Panel/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="UI/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("7_ebkvi")
 
-[node name="TextureRect2" type="TextureRect" parent="CanvasLayer/Panel/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="UI/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("7_ebkvi")
 
-[node name="TextureRect3" type="TextureRect" parent="CanvasLayer/Panel/HBoxContainer"]
+[node name="TextureRect3" type="TextureRect" parent="UI/Panel/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 texture = ExtResource("7_ebkvi")
+
+[node name="checkpoint_manager" type="Node" parent="."]
+script = ExtResource("10_b64jt")
+
+[node name="checkpoint" parent="checkpoint_manager" instance=ExtResource("5_58gwq")]
+position = Vector2(511, -25)
+
+[node name="game_manager" type="Node" parent="." node_paths=PackedStringArray("hearts")]
+script = ExtResource("11_07gvl")
+hearts = [NodePath("../UI/Panel/HBoxContainer/TextureRect"), NodePath("../UI/Panel/HBoxContainer/TextureRect2"), NodePath("../UI/Panel/HBoxContainer/TextureRect3")]
