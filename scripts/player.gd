@@ -21,10 +21,6 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump") and is_on_floor():
 		jump()
 
-	# Handle attack.
-	if Input.is_action_just_pressed("attack") and is_on_floor():
-		attack()
-
 	# Get the input direction and handle the movement/deceleration.
 	var direction := Input.get_axis("move_left", "move_right")
 
@@ -48,6 +44,3 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-
-func attack():
-	pAnimate.play("attack")
