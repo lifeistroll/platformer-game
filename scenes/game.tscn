@@ -281,35 +281,53 @@ layer_1/tile_data = PackedInt32Array(29, 131073, 1, 30, 131073, 1, 31, 131073, 1
 [node name="platform" parent="Platforms" instance=ExtResource("3_2cpf0")]
 position = Vector2(199, -88)
 
+[node name="platform2" parent="Platforms" instance=ExtResource("3_2cpf0")]
+position = Vector2(1446, -104)
+
+[node name="platform3" parent="Platforms" instance=ExtResource("3_2cpf0")]
+position = Vector2(1464, -104)
+
+[node name="platform4" parent="Platforms" instance=ExtResource("3_2cpf0")]
+position = Vector2(1482, -104)
+
+[node name="platform5" parent="Platforms" instance=ExtResource("3_2cpf0")]
+position = Vector2(1499, -104)
+
+[node name="platform6" parent="Platforms" instance=ExtResource("3_2cpf0")]
+position = Vector2(1517, -104)
+
+[node name="platform7" parent="Platforms" instance=ExtResource("3_2cpf0")]
+position = Vector2(1535, -104)
+
 [node name="Jumpers" type="Node" parent="."]
 
 [node name="jumper" parent="Jumpers" instance=ExtResource("4_s6v8h")]
-position = Vector2(1431, 78)
+position = Vector2(1431, 81)
 
 [node name="jumper2" parent="Jumpers" instance=ExtResource("4_s6v8h")]
-position = Vector2(1450, 78)
+position = Vector2(1450, 81)
 
 [node name="jumper3" parent="Jumpers" instance=ExtResource("4_s6v8h")]
-position = Vector2(1469, 78)
+position = Vector2(1469, 81)
 
 [node name="jumper4" parent="Jumpers" instance=ExtResource("4_s6v8h")]
-position = Vector2(1488, 78)
+position = Vector2(1488, 81)
 
 [node name="jumper5" parent="Jumpers" instance=ExtResource("4_s6v8h")]
-position = Vector2(1507, 78)
+position = Vector2(1507, 81)
 
 [node name="jumper6" parent="Jumpers" instance=ExtResource("4_s6v8h")]
-position = Vector2(1526, 78)
+position = Vector2(1526, 81)
 
 [node name="Player" parent="." instance=ExtResource("1_p2poo")]
 z_index = 5
-position = Vector2(1423, -20)
+position = Vector2(1402, -52)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(50, 19)
 scale = Vector2(0.822878, 0.882262)
 zoom = Vector2(3, 3)
-limit_top = -200
+limit_top = -100000000
 limit_bottom = 89
 limit_smoothed = true
 position_smoothing_enabled = true

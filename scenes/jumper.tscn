@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://cgae63v0uu2ue"]
 
 [ext_resource type="Texture2D" uid="uid://11u57aqe2t15" path="res://assests/tilemap_packed.png" id="1_bs5ud"]
-[ext_resource type="Script" path="res://scenes/jumper.gd" id="1_lik5t"]
+[ext_resource type="Script" path="res://scripts/jumper.gd" id="1_lik5t"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t6lfb"]
 atlas = ExtResource("1_bs5ud")
@@ -47,7 +47,7 @@ script = ExtResource("1_lik5t")
 sprite_frames = SubResource("SpriteFrames_vlnpc")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.792886
+frame_progress = 0.225127
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
