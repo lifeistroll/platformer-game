@@ -290,22 +290,22 @@ layer_1/tile_data = PackedInt32Array(29, 131073, 1, 30, 131073, 1, 31, 131073, 1
 position = Vector2(203, -89)
 
 [node name="platform2" parent="Platforms" instance=ExtResource("3_2cpf0")]
-position = Vector2(1450, -105)
+position = Vector2(1448, -81)
 
 [node name="platform3" parent="Platforms" instance=ExtResource("3_2cpf0")]
-position = Vector2(1468, -105)
+position = Vector2(1466, -81)
 
 [node name="platform4" parent="Platforms" instance=ExtResource("3_2cpf0")]
-position = Vector2(1486, -105)
+position = Vector2(1484, -81)
 
 [node name="platform5" parent="Platforms" instance=ExtResource("3_2cpf0")]
-position = Vector2(1503, -105)
+position = Vector2(1501, -81)
 
 [node name="platform6" parent="Platforms" instance=ExtResource("3_2cpf0")]
-position = Vector2(1521, -105)
+position = Vector2(1519, -81)
 
 [node name="platform7" parent="Platforms" instance=ExtResource("3_2cpf0")]
-position = Vector2(1539, -105)
+position = Vector2(1537, -81)
 
 [node name="Jumpers" type="Node" parent="."]
 
@@ -327,27 +327,28 @@ position = Vector2(1511, 80)
 [node name="jumper6" parent="Jumpers" instance=ExtResource("4_s6v8h")]
 position = Vector2(1530, 80)
 
+[node name="Enemies" type="Node" parent="."]
+
+[node name="enemy" parent="Enemies" instance=ExtResource("13_vrfor")]
+position = Vector2(702, -16)
+
 [node name="Coins" type="Node" parent="."]
 
 [node name="Coin" parent="Coins" instance=ExtResource("5_74g2v")]
 visible = true
-position = Vector2(278, -99)
+position = Vector2(1072, -25)
 
 [node name="Coin2" parent="Coins" instance=ExtResource("5_74g2v")]
 visible = true
-position = Vector2(294, -100)
+position = Vector2(1145, -25)
 
 [node name="Coin3" parent="Coins" instance=ExtResource("5_74g2v")]
 visible = true
-position = Vector2(314, -99)
+position = Vector2(1234, -25)
 
 [node name="Coin4" parent="Coins" instance=ExtResource("5_74g2v")]
 visible = true
-position = Vector2(335, -99)
-
-[node name="Coin5" parent="Coins" instance=ExtResource("5_74g2v")]
-visible = true
-position = Vector2(352, -97)
+position = Vector2(1324, -25)
 
 [node name="Player" parent="." instance=ExtResource("1_p2poo")]
 z_index = 5
@@ -427,6 +428,19 @@ IT SAVES!"
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
+[node name="Label5" type="Label" parent="Texts"]
+offset_left = 1067.0
+offset_top = -99.0
+offset_right = 4330.0
+offset_bottom = 430.0
+scale = Vector2(0.05, 0.05)
+theme_override_colors/font_color = Color(0.956863, 0.705882, 0.105882, 1)
+theme_override_fonts/font = ExtResource("6_ing0j")
+theme_override_font_sizes/font_size = 200
+text = "Collect The coins"
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="Hearts" type="Panel" parent="UI"]
@@ -487,6 +501,3 @@ position = Vector2(1397, -27)
 [node name="game_manager" type="Node" parent="." node_paths=PackedStringArray("hearts")]
 script = ExtResource("11_07gvl")
 hearts = [NodePath("../UI/Hearts/HBoxContainer/TextureRect"), NodePath("../UI/Hearts/HBoxContainer/TextureRect2"), NodePath("../UI/Hearts/HBoxContainer/TextureRect3")]
-
-[node name="enemy" parent="." instance=ExtResource("13_vrfor")]
-position = Vector2(717, 1)

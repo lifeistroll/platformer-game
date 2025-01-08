@@ -8,6 +8,10 @@ const JUMP_VELOCITY = -400.0
 func jump():
 	velocity.y = JUMP_VELOCITY
 
+func side_jump(x):
+	velocity.y = JUMP_VELOCITY
+	velocity.x = x
+
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
