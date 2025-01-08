@@ -3,7 +3,7 @@ extends CharacterBody2D
 const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var pAnimate: AnimatedSprite2D = $pAnimate
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -23,16 +23,16 @@ func _physics_process(delta: float) -> void:
 
 	# Flip the sprite based on direction
 	if direction < 0:
-		animated_sprite_2d.flip_h = false
+		pAnimate.flip_h = false
 	elif direction > 0:
-		animated_sprite_2d.flip_h = true
+		pAnimate.flip_h = true
 
 	# Play appropriate animations
 	if is_on_floor():
 		if direction == 0:
-			animated_sprite_2d.play("idle")
+			pAnimate.play("idle")
 		else:
-			animated_sprite_2d.play("run")
+			pAnimate.play("run")
 
 	# Apply horizontal movement
 	if direction != 0:
@@ -43,4 +43,4 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 func attack():
-	animated_sprite_2d.play("attack")
+	pAnimate.play("attack")

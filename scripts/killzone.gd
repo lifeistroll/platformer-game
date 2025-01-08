@@ -8,7 +8,6 @@ func _on_body_entered(body):
 	body.get_node("pColl").queue_free()
 	timer.start()
 
-
 func _on_timer_timeout() -> void:
 	Engine.time_scale = 1.0
 	get_tree().reload_current_scene()

@@ -54,7 +54,7 @@ position = Vector2(2, -11.5)
 scale = Vector2(2, 2)
 shape = SubResource("CapsuleShape2D_40j5q")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="pAnimate" type="AnimatedSprite2D" parent="."]
 position = Vector2(2, -11)
 sprite_frames = SubResource("SpriteFrames_dpnuo")
 animation = &"run"
